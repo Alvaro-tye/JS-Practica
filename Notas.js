@@ -67,3 +67,130 @@ miArreglo.push(["e",3]);                    //Con la funcion push, puedes añadi
 auxArreglo = miArreglo.pop();               //Con la funcion pop, puedes extraer el ultimo valor de un arreglo y lo devuelve, haciendo que se pueda guardar en otra variable
 auxArreglo = miArreglo.shift();             //Con la funcion shift, puedes extraer el primer valor en un arreglo y lo devuelve
 miArreglo.unshift(auxArreglo);              //Con la funcion unshift, puedes añadir valores al inicio de un arreglo
+
+
+//Funciones
+
+function nombreFuncion(param1,param2)       //Las funciones se declaran usando la palabra "function"
+{                                           //Los parametros usados en una funcion solo requieren un nombre, y que este nombre difiera del nombre de las variables globales que pudieran entrar en conflicto
+    let resp = param1 + param2;             //Notar que la variables declaradas con "let" o "const" tienen alcance por bloques, es decir que la variable declarada aqui, solo afecta dentro de la funcion    
+    return resp;                            //Con la palabra return puedes devolver un valor o el valor de una variable.
+}
+
+//Estructura: Queue                         //Estructura de datos abstracta donde los elementos se mantienen en orden
+
+/*
+function siguienteEnLaFila(arr, item)       //Esta funcion, recibe un arreglo y un numero, el valor de los numero en el arreglo y el numero a añadir, no tienen relacion por su valor, solo por la posicion
+{
+  arr.push(item);                           //Se añade el valor nuevo al final del arreglo
+  return arr.shift();                       //Se extrae el primer valor del arreglo, y es devuelto por la funcion
+}
+
+auxArreglo = [1, 2, 3, 4, 5];
+
+console.log("Before: " + JSON.stringify(auxArreglo));
+console.log(nextInLine(auxArreglo, 6));
+console.log("After: " + JSON.stringify(auxArreglo));
+*/
+
+
+//Sentencia if, else y else/if
+
+function tuNumero(num)                                                      //Nota: Los if no estan correctamente ordenados :c
+{
+    console.log("El numero " + JSON.stringify(num)+ "...")                  //La sentencia "if" requiere  de una condicion, de no cumplirse, se puede usar (o no) un "else", si se desea poner mas condiciones puede usarse un "else if"
+    if(num == 1)                                                            // == Verdadero si son iguales, convierte el tipo de dato de ser necesario.
+    {
+        console.log("Es igual a 1");
+    }
+    else if(num === 1)                                                      // === Verdaderos si son iguales en valor y tipo de dato, no convierte.
+    {
+        console.log("Es igual a 1 y el valor es de tipo 'number'");
+    }
+    else if(num != 1)                                                       // != Verdadero si son diferentes, convierte el tipo de dato de ser necesario.
+    {
+        console.log("Es diferente de 1");
+    }
+    else if(num !== 1)                                                      // !== Verdadero si son diferentes en valor o tipo de dato, no convierte.
+    {
+        console.log("Es diferente de 1 o el valor no es de tipo 'number'");
+    }
+    else if(num > 1)                                                        // > Verdadero si el valor de la izquierda es mayor, convierte el tipo de dato.
+    {
+        console.log("Es mayor a 1");
+    }
+    else if(num >= 1)                                                       // >= Verdadero si el valor de la izquierda es mayor o igual, convierte el tipo de dato.
+    {
+        console.log("Es mayor o igual a 1");
+    }
+    else if(num < 1)                                                        // < Verdadero si el valor de la izquierda es menor, convierte el tipo de dato.
+    {
+        console.log("Es menor a 1");
+    }
+    else if(num <= 1)                                                       // <= Verdadero si el valor de la izquierda es menor o igual, convierte el tipo de dato
+    {
+        console.log("Es menor o igual a 1");
+    }
+    else if(num >= -10 && num <= 10)                                        // && Verdadero solo si ambos valores booleanos son verdaderos
+    {
+        console.log("Esta entre -10 y 10");
+    }
+    else if(num < -10 || num > 10)                                          // || Verdadero si alguno o ambos valores son verdaderos
+    {
+        console.log("Es menor de -10 o mayor a 10");
+    }
+    else 
+    {
+        console.log("Error")
+    }
+}
+
+//tuNumero(1);
+
+
+//Sentencia Switch
+
+let auxSwitch = "b";          
+switch (auxSwitch)            //La sentencia switch, es una forma de definir varias porciones de codigo que se ejecutaran si la igualdad de un case en concreto se cumple.
+{
+  case "a":                   //La sentencia case, define una condicion de igualdad estricata "===", que de cumplirse, ejecutara la porcion de codigo debajo de ella, hasta encontrar un break;
+    answer = "apple";       
+    break;                    //La sentencia break, detienen o para el ultmo case que se este ejecutando, es una forma de delimitar el codigo que se ejecutara despues de que un case se haya cumplido.
+  case "b":
+    answer = "bird";
+    break;
+  case "c":
+  case "ca":                  //Aqui se puede observar que si el case "c" o el case "ca" se cumplen, ambos ejecutaran las mismas lineas de codigo, hasta el mismo break, debido a la ausencia de un break entre ellos. 
+    answer = "cat";
+    break;
+  default:                    //default, es un "case" especial que se ejecuta si ningun otro case cumplio su condicion.
+    answer = "stuff";
+    break;
+}
+
+
+//Objetos
+
+const miPerro =                                             //Las variables de tipo objeto son como los arreglos, pero sus valores estan asociados a una propiedad
+{
+  nombrePerrito: "Scrash",                                  //Los nombres de la propiedades pueden tener un nombre similar  auna variable
+  "Numero de piernas": 4,                                              //pero tambien pueden tener un nombre de tipo string o number
+  colas: 1,                                               
+  amigos: ["Vela","Cerezo"]                                 //Los valores de cada propiedad pueden ser de cualquier tipo de dato
+};
+
+console.log(miPerro.nombrePerrito);                         //La forma de acceder a los valores de las propiedades, depende de su nombre, si este es similar a las variables, entonces se accede usando el "."
+console.log(miPerro["Numero de piernas"]);                  //Si el nombre es de tipo string o number, entonces se usan los corchetes, similar a como lo hariamos con un arreglo.
+
+
+
+
+
+
+
+
+
+
+
+ 
+
