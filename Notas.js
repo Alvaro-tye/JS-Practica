@@ -67,7 +67,7 @@ miArreglo.push(["e",3]);                    //Con la funcion push, puedes añadi
 auxArreglo = miArreglo.pop();               //Con la funcion pop, puedes extraer el ultimo valor de un arreglo y lo devuelve, haciendo que se pueda guardar en otra variable
 auxArreglo = miArreglo.shift();             //Con la funcion shift, puedes extraer el primer valor en un arreglo y lo devuelve
 miArreglo.unshift(auxArreglo);              //Con la funcion unshift, puedes añadir valores al inicio de un arreglo
-
+//console.log(Array.isArray(auxArreglo));   //Esta funcion del sistema, nos dice si una variable contiene un valor de tipo array/arreglo, y devuelve verdadero o falso.
 
 //Funciones
 
@@ -173,21 +173,187 @@ switch (auxSwitch)            //La sentencia switch, es una forma de definir var
 
 const miPerro =                                             //Las variables de tipo objeto son como los arreglos, pero sus valores estan asociados a una propiedad
 {
-  nombrePerrito: "Scrash",                                  //Los nombres de la propiedades pueden tener un nombre similar  auna variable
+  nombrePerrito: "Skrach",                                  //Los nombres de la propiedades pueden tener un nombre similar  auna variable
   "Numero de piernas": 4,                                              //pero tambien pueden tener un nombre de tipo string o number
   colas: 1,                                               
   amigos: ["Vela","Cerezo"]                                 //Los valores de cada propiedad pueden ser de cualquier tipo de dato
 };
 
-console.log(miPerro.nombrePerrito);                         //La forma de acceder a los valores de las propiedades, depende de su nombre, si este es similar a las variables, entonces se accede usando el "."
-console.log(miPerro["Numero de piernas"]);                  //Si el nombre es de tipo string o number, entonces se usan los corchetes, similar a como lo hariamos con un arreglo.
+//console.log(miPerro.nombrePerrito);                       //La forma de acceder a los valores de las propiedades, depende de su nombre, si este es similar a las variables, entonces se accede usando el "."
+//console.log(miPerro["Numero de piernas"]);                //Si el nombre es de tipo string o number, entonces se usan los corchetes, similar a como lo hariamos con un arreglo.
+
+const dogs = {                                              //Es posible acceder a propiedades con nombramiento de variable, haciendo uso de corchetes. Para ello, solo se debe escribir el nombre de la propiedad, pero en forma string o number
+  Fido: "Mutt",
+  Hunter: "Doberman",
+  Snoopie: "Beagle"
+};
+
+const myDog = "Hunter";                                     //Asignar le nombre de una propiedad a una variable y posteriormente usarla para poder acceder atraves de ella, es util cuando se quiere iterar atraves de la propiedades de un objeto o para acceder a una tabla de busqueda                            
+const myBreed = dogs[myDog];                                //Aqui se hace uso de la variable con el nombre de la propiedad, al ser string, acceder a ella atraves de corchetes es valido
+//console.log(myBreed);
+
+miPerro.color = "Crema";                                    //De esta forma se puede añadir propiedades a un objeto e iniciarlizar el valor de la misma
+miPerro.sonido = "Woof";
+miPerro.sonido = "Guau Guau";                               //Aqui modificamos un valor de la propiedad sonido del objeto miPerro
+miPerro.amigos.push("Zeus");                                //Aca tambien la modificamos, pero aprovechamos que el valor es un arreglo para hacer uso de la funcion push
+
+//delete miPerro.sonido;                                    //Usando "delete", podemos eliminar una propiedad de un objeto 
+
+//console.log(miPerro.sonido);
+//console.log(miPerro.amigos);                             
+
+function phoneticLookup(val)                                //Esta funcion te devuelve el valor de la propiedad que se le coloque 
+{
+  let result = "";
+
+  const lookup = {                                          //Los objetos son almacenamientos de valor/clave, como un dicionario
+    "alpha": "Adams",
+    "bravo": "Boston",
+    "charlie": "Chicago",
+    "delta": "Denver",
+    "echo": "Easy",
+    "foxtrot":"Frank"
+  };
+  result = lookup[val];
+  return result;
+}
+//phoneticLookup("charlie");
+
+function revisarObjecto(obj,prop)                           //Con esta funcion, al ingresar un objeto y el posible nombre de una propiedad, si existe, te dice el valor de la propiedad, si no existe, te devuelve un mensaje
+{
+    if (obj.hasOwnProperty(prop))                           //Esta funcion de JS, te dice si el nombre de una propiedad existe en determinado objeto, devuelve Verdadero o falso, segun el caso
+    {
+        return obj[prop]
+    }
+    else
+    {
+        return "No se encontro."
+    }
+}
+
+//console.log(revisarObjecto(miPerro,"nombrePerrito"));
+/*
+const myMusic = {                                                 //Los datos de tipo object, pueden almacenar los otros tipos de datos (incluso otros objetos) en cualquier combinacion, al crear el objeto en forma de arreglo o de sub-objeto (añadir un par corchetes o llaves extra), combirtiendolo en una estructura de datos fexible o compleja
+  "Billy Joel": 
+  {
+    "artist": "Billy Joel",
+    "title": "Piano Man",
+    "release_year": 1973,
+    "formats": [
+      "CD",
+      "8T",
+      "LP"
+    ],
+    "gold": true
+  }
+};
+
+myMusic["Daft Punk"]                                              //Para añadir nuevos valores a una estructura compleja creada en forma de objeto, la forma de añadir o borrar valores, seria utilizando las formas de acceso de corchete y punto, dependiendo de la caracteristicas de las propiedades, por ejemplo que tengan nombres con espacios o numeros
+  = {
+    "art ist": "Daft Punk",
+    "title": "Homework",
+    "release_year": 1997,
+    "formats": ["CD","Cassette","LP"],
+    "gold": true
+  };
+
+//console.log(myMusic["Billy Joel"].formats[2]);                    //En esta linea, se quiere mostrar el valor LP, para ello, como el nombre del sub-objeto "Billy Joel", tienen un espacio en su nombre, entonces se usa la notacion de corchetes, pero para la propiedad de "format" se puede usar cualquiera, pero hay que resaltar, que como la propiedad "format" tiene valores en forma de arreglo, entonces la añadimos unos corchetes para acceder al valor especifico
+//console.log(myMusic["Daft Punk"]["art ist"]);                     //En este otro caso, tanto el nombre del sub-objeto y el nombre de la propiedad, tienen espacios en sus nombres, por lo que para acceder al valor de "art ist", se requiere usar dos pares de corchetes, de forma similar como si se tratase de un arreglo, en esencia, los objetos son arreglos, por lo que compraten muchas similitudes a la hora de manejarlos, para este caso podemos verlo como si se tratase de cordenadas en clave en un plano
+
+*/
+/*
+const myMusic = [{                                                  //Aqui tenemos otra variante de estructura de datos compleja, pero esta esta en forma es en arreglo, se puede observar que el sub-espacio, no requiere de un nombre, por lo que para manipularlo inicalmente, se haria como con un arreglo
+    "artist": "Billy Joel",
+    "title": "Piano Man",
+    "release_year": 1973,
+    "formats": [
+      "CD",
+      "8T",
+      "LP"
+    ],
+    "gold": true
+  }
+];
+
+myMusic.push(                                                        //Al tratarse de un arreglo, tambien se pueden utilizar las funciones push y similares, para manipular datos.
+    {"artist": "Daft Punk",
+    "title": "Homework",
+    "release_year": 1997,
+    "formats": ["CD","Cassette","LP"],
+    "gold": true
+  });
+
+console.log(myMusic[0].title);                                       //Aqui se observa como acceder a los valores en una estructura de datos compleja en forma de arreglo, al inicio se maneja como arreglo, pero deriva a lo que es, un objeto
+//console.log(myMusic[1].formats[2]);
+*/
+
+const ourStorage = 
+{
+  "desk": 
+  {
+    "drawer": "stapler"
+  },
+  "cabinet": 
+  {
+    "top drawer": 
+    { 
+      "folder1": "a file",
+      "folder2": "secrets"
+    },
+    "bottom drawer": "soda"
+  }
+};
+
+//console.log(ourStorage.cabinet["top drawer"].folder2);
 
 
 
+//While
+
+let arregloWhile = [];
+let i = 0;
+
+while (i<5) 
+{
+  arregloWhile.push(i);
+  i++;  
+}
 
 
+//For
 
+let arregloFor = [];
+for (i = 0; i < 5; i++) 
+{
+  arregloFor.push(i+1);  
+}
 
+function multiplyAll(arr)                           //Ejemplo de for anidados, usado para recorrer un arreglo y añadir los valores a un producto de todos ellos
+{
+  let product = 1;
+  for (let i = 0; i < arr.length; i++)
+  {
+    for(let j = 0; j < arr[i].length; j++)
+    {
+      product *= arr[i][j];
+    }
+  }
+  return product;
+}
+
+//Do while
+
+let arregloDo = [];
+i = 5;
+
+do 
+{
+  arregloDo.push(i);
+  i++;
+} 
+while (i<5);
+
+console.log(arregloDo);
 
 
 
